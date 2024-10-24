@@ -1,11 +1,3 @@
-/*!
- * jQuery-Seat-Charts v1.1.1
- * https://github.com/mateuszmarkowski/jQuery-Seat-Charts
- *
- * Copyright 2013, 2014 Mateusz Markowski
- * Released under the MIT license
- */
-
 (function($) {
 		
 	//'use strict';	
@@ -264,11 +256,7 @@
 									case 37:
 									case 39:
 										e.preventDefault();
-										/*
-										 * The logic here is slightly different from the one for up/down arrows.
-										 * User will be able to browse the whole map using just left/right arrow, because
-										 * it will move to the next row when we reach the right/left-most seat.
-										 */
+										
 										$newSeat = (function($seats) {
 										
 											if (!$seats.index($seat) && e.which == 37) {
@@ -366,23 +354,6 @@
 				);
 			}
 
-			/*
-			 * Do this for each seat (letter)
-			 *
-			 * Now users will be able to pass custom ID and label which overwrite the one that seat would be assigned by getId and
-			 * getLabel
-			 *
-			 * New format is like this:
-			 * a[ID,label]a[ID]aaaaa
-			 *
-			 * So you can overwrite the ID or label (or both) even for just one seat.
-			 * Basically ID should be first, so if you want to overwrite just label write it as follows:
-			 * a[,LABEL]
-			 *
-			 * Allowed characters in IDs areL 0-9, a-z, A-Z, _
-			 * Allowed characters in labels are: 0-9, a-z, A-Z, _, ' ' (space)
-			 *
-			 */
 			 
 			$.each(characters.match(/[a-z_]{1}(\[[0-9a-z_]{0,}(,[0-9a-z_ ]+)?\])?/gi), function (column, characterParams) { 
 				var matches         = characterParams.match(/([a-z_]{1})(\[([0-9a-z_ ,]+)\])?/i),
